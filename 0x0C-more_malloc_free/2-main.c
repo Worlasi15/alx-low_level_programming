@@ -1,48 +1,50 @@
 #include "main.h"
-#include <stddef.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
-  * _memset - to fill a block of memory with a specified value
-  * @s: memory to be filled
-  * @b: desired value
-  * @n: number of byte to change
-  * Return: pointer to the memory area s
-  */
-char *_memset(char *s, char b, unsigned int n)
-{
-	int a = 0;
-
-	for (; n > 0; a++)
-	{
-		s[a] = b;
-		 n--;
-	}
-
-	return (s);
-}
-
-/**
- * *_calloc - allocates memory for an array
- * @nmemb: number of elements in the array
- * @size: size of each element
+ * simple_print_buffer - prints buffer in hexa
+ * @buffer: the address of memory to print
+ * @size: the size of the memory to print
  *
- * Return: pointer to allocated memory
+ * Return: Nothing.
  */
-void *_calloc(unsigned int nmemb, unsigned int size)
+void simple_print_buffer(char *buffer, unsigned int size)
 {
-	char *p;
+    unsigned int i;
 
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-
-	p = malloc(size * nmemb);
-
-	if (p == NULL)
-		return (NULL);
-
-	_memset(p, 0, nmemb * size);
-	return (p);
+    i = 0;
+    while (i < size)
+    {
+        if (i % 10)
+        {
+            printf(" ");
+        }
+        if (!(i % 10) && i)
+        {
+            printf("\n");
+        }
+        printf("0x%02x", buffer[i]);
+        i++;
+    }
+    printf("\n");
 }
 
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *a;
+
+    a = _calloc(98, sizeof(char));
+    strcpy(a, "Best");
+    strcpy(a + 4, " School! :)\n");
+    a[97] = '!';
+    simple_print_buffer(a, 98);
+    free(a);
+    return (0);
+}
