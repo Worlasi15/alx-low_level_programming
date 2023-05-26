@@ -28,7 +28,7 @@ void print_all(const char * const format, ...)
 					printf("%s%d", ptr, va_arg(list, int));
 					break;
 				case 'f':
-					printf("%s%f", p, va_arg(list, double));
+					printf("%s%f", ptr, va_arg(list, double));
 					break;
 				case 's':
 					p = va_arg(list, char *);
@@ -41,7 +41,7 @@ void print_all(const char * const format, ...)
 					a++;
 					continue;
 			}
-			p = ", ";
+			ptr = ", ";
 			a++;
 		}
 	}
