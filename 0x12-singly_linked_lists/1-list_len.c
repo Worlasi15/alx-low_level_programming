@@ -13,7 +13,7 @@ size_t list_len(const list_t *p)
 
 	while (p)
 	{
-		p++;
+		akadi++;
 		p = p->next;
 	}
 	return (akadi);
